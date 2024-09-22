@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NumPy Preparation</title>
+<style>
+body {
+  font-family: sans-serif;
+  margin: 20px;
+}
+h1, h2, h3 {
+  color: #333;
+}
+.section {
+  margin-bottom: 40px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+.section-title {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+}
+.section-content {
+  display: none; /* Initially hidden */
+  padding-top: 10px;
+}
+label {
+  display: inline-block; /* Allow label and checkbox to be on same line */
+  margin-left: 5px; 
+  font-weight: normal;
+}
+input[type="text"], textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  resize: vertical;
+}
+button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+#questions-section {
+  display: none; /* Questions hidden by default */
+}
+#progress-bar {
+  width: 0%;
+  height: 20px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 20px;
+  color: white;
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+</style>
+</head>
+<body>
+
+<h1>NumPy Preparation</h1>
+
+<div id="progress-section">
+  <h3>Progress:</h3>
+  <div id="progress-bar">0%</div>
+</div>
+
+<!-- Section 1: Introduction to NumPy -->
+<div class="section">
+  <h2 class="section-title" onclick="toggleSection(this)">Introduction to NumPy</h2>
+  <div class="section-content">
+    <ul>
+      <li><input type="checkbox" id="item1" onchange="updateProgress()"><label for="item1">What is NumPy and why is it used?</label></li>
+      <li><input type="checkbox" id="item2" onchange="updateProgress()"><label for="item2">Key features of NumPy</label></li>
+      <li><input type="checkbox" id="item3" onchange="updateProgress()"><label for="item3">Installation and importing NumPy</label></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Section 2: NumPy Arrays -->
+<div class="section">
+  <h2 class="section-title" onclick="toggleSection(this)">NumPy Arrays</h2>
+  <div class="section-content">
+    <h3>Creating Arrays</h3>
+    <ul>
+      <li><input type="checkbox" id="item4" onchange="updateProgress()"><label for="item4">Creating arrays from Python lists</label></li>
+      <li><input type="checkbox" id="item5" onchange="updateProgress()"><label for="item5">Creating arrays with `np.arange()`, `np.linspace()`, `np.zeros()`, `np.ones()`, etc.</label></li>
+      <li><input type="checkbox" id="item6" onchange="updateProgress()"><label for="item6">Creating multi-dimensional arrays</label></li>
+      <li><input type="checkbox" id="item7" onchange="updateProgress()"><label for="item7">Creating arrays with random numbers (`np.random`)</label></li>
+    </ul>
+    <h3>Array Attributes</h3>
+    <ul>
+      <li><input type="checkbox" id="item8" onchange="updateProgress()"><label for="item8">Understanding `shape`, `size`, `ndim`, `dtype`</label></li>
+    </ul>
+    <h3>Indexing and Slicing</h3>
+    <ul>
+      <li><input type="checkbox" id="item9" onchange="updateProgress()"><label for="item9">Accessing elements in 1D and 2D arrays</label></li>
+      <li><input type="checkbox" id="item10" onchange="updateProgress()"><label for="item10">Slicing arrays to extract subarrays</label></li>
+    </ul>
+    <h3>Array Manipulation</h3>
+    <ul>
+      <li><input type="checkbox" id="item11" onchange="updateProgress()"><label for="item11">Reshaping arrays with `.reshape()`</label></li>
+      <li><input type="checkbox" id="item12" onchange="updateProgress()"><label for="item12">Flattening arrays with `.flatten()`</label></li>
+      <li><input type="checkbox" id="item13" onchange="updateProgress()"><label for="item13">Transposing arrays with `.transpose()`</label></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Section 3: NumPy Operations -->
+<div class="section">
+  <h2 class="section-title" onclick="toggleSection(this)">NumPy Operations</h2>
+  <div class="section-content">
+    <h3>Arithmetic Operations</h3>
+    <ul>
+      <li><input type="checkbox" id="item14" onchange="updateProgress()"><label for="item14">Performing element-wise arithmetic operations</label></li>
+      <li><input type="checkbox" id="item15" onchange="updateProgress()"><label for="item15">Broadcasting in NumPy</label></li>
+      <li><input type="checkbox" id="item16" onchange="updateProgress()"><label for="item16">Matrix multiplication with `np.dot()` or `@`</label></li>
+    </ul>
+    <h3>Comparison Operations</h3>
+    <ul>
+      <li><input type="checkbox" id="item17" onchange="updateProgress()"><label for="item17">Element-wise comparison operations and boolean arrays</label></li>
+    </ul>
+    <h3>Mathematical Functions</h3>
+    <ul>
+      <li><input type="checkbox" id="item18" onchange="updateProgress()"><label for="item18">Using NumPy's built-in mathematical functions (e.g., `np.sin()`, `np.exp()`, `np.sqrt()`, etc.)</label></li>
+    </ul>
+    <h3>Aggregation Functions</h3>
+    <ul>
+      <li><input type="checkbox" id="item19" onchange="updateProgress()"><label for="item19">Finding minimum, maximum, sum, mean, variance, etc. using NumPy functions</label></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Section 4: Broadcasting, Concatenation, and Splitting -->
+<div class="section">
+  <h2 class="section-title" onclick="toggleSection(this)">Broadcasting, Concatenation, and Splitting</h2>
+  <div class="section-content">
+    <ul>
+      <li><input type="checkbox" id="item20" onchange="updateProgress()"><label for="item20">Concatenating arrays with `np.concatenate()`</label></li>
+      <li><input type="checkbox" id="item21" onchange="updateProgress()"><label for="item21">Stacking arrays with `np.stack()`, `np.hstack()`, `np.vstack()`, `np.dstack()`</label></li>
+      <li><input type="checkbox" id="item22" onchange="updateProgress()"><label for="item22">Splitting arrays with `np.split()`, `np.array_split()`, etc.</label></li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- Questions Section -->
+<input type="checkbox" id="finished-studying" onchange="showQuestions()">
+<label for="finished-studying">I have studied and finished the list</label>
+
+<div id="questions-section">
+  <h2>NumPy Questions</h2>
+  <p>Answer the following questions by writing Python code in the provided text areas:</p>
+
+  <!-- Question 1 -->
+  <p><label for="q1">Question 1: Create a 1D NumPy array containing the numbers 2, 4, 6, 8, 10.</label><br>
+  <textarea id="q1" name="q1"></textarea></p>
+
+  <!-- Question 2 -->
+  <p><label for="q2">Question 2: Create a 2D NumPy array (a matrix) with 3 rows and 2 columns, filled with zeros.</label><br>
+  <textarea id="q2" name="q2"></textarea></p>
+
+  <!-- ... (Add more questions here - up to 20) ... --> 
+
+</div>
+
+<script>
+function toggleSection(titleElement) {
+  let content = titleElement.nextElementSibling; 
+  content.style.display = content.style.display === "block" ? "none" : "block";
+}
+
+function updateProgress() {
+  let totalCheckboxes = document.querySelectorAll('input[type="checkbox"]').length - 1; // Exclude "Finished Studying" checkbox
+  let checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked').length;
+  let progress = (checkedCheckboxes / totalCheckboxes) * 100;
+  document.getElementById("progress-bar").style.width = progress + "%";
+  document.getElementById("progress-bar").textContent = progress.toFixed(0) + "%"; 
+}
+
+function showQuestions() {
+  if (document.getElementById("finished-studying").checked) {
+    document.getElementById("questions-section").style.display = "block";
+  } else {
+    document.getElementById("questions-section").style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>

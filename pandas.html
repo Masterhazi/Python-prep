@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pandas Preparation</title>
+<style>
+body {
+  font-family: sans-serif;
+  margin: 20px;
+}
+h1, h2, h3 {
+  color: #333;
+}
+.section {
+  margin-bottom: 40px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+.section-title {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+}
+.section-content {
+  display: none; /* Initially hidden */
+  padding-top: 10px;
+}
+label {
+  display: inline-block; /* Allow label and checkbox to be on same line */
+  margin-left: 5px; 
+  font-weight: normal;
+}
+input[type="text"], textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  resize: vertical;
+}
+button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+#questions-section {
+  display: none; /* Questions hidden by default */
+}
+#progress-bar {
+  width: 0%;
+  height: 20px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 20px;
+  color: white;
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+</style>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script> </head>
+<body>
+
+<h1>Pandas Preparation</h1>
+
+<div id="progress-section">
+  <h3>Progress:</h3>
+  <div id="progress-bar">0%</div>
+</div>
+
+<!-- Section 1: Introduction to Pandas -->
+<div class="section">
+  <h2 class="section-title" onclick="toggleSection(this)">Introduction to Pandas</h2>
+  <div class="section-content">
+    <ul>
+      <li><input type="checkbox" id="item1" onchange="updateProgress()"><label for="item1">What is Pandas?</label></li>
+      <li><input type="checkbox" id="item2" onchange="updateProgress()"><label for="item2">Applications of Pandas</label></li>
+      <li><input type="checkbox" id="item3" onchange="updateProgress()"><label for="item3">Pandas vs. NumPy</label></li>
+      <li><input type="checkbox" id="item4" onchange="updateProgress()"><label for="item4">Components of Pandas: Series and DataFrame</label></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Section 2: Pandas Series -->
+<div class="section">
+  <h2 class="section-title" onclick="toggleSection(this)">Pandas Series</h2>
+  <div class="section-content">
+    <h3>Creating Series</h3>
+    <ul>
+      <li><input type="checkbox" id="item5" onchange="updateProgress()"><label for="item5">Using the `pandas.Series()` constructor</label></li>
+      <li><input type="checkbox" id="item6" onchange="updateProgress()"><label for="item6">Creating Series from lists, NumPy arrays, and dictionaries</label></li>
+      <li><input type="checkbox" id="item7" onchange="updateProgress()"><label for="item7">Setting custom index labels</label></li>
+    </ul>
+    <h3>Accessing Series</h3>
+    <ul>
+      <li><input type="checkbox" id="item8" onchange="updateProgress()"><label for="item8">Accessing elements by position and index label</label></li>
+      <li><input type="checkbox" id="item9" onchange="updateProgress()"><label for="item9">Using `.index` and `.values` attributes</label></li>
+    </ul>
+    <h3>Filtering Series</h3>
+    <ul>
+      <li><input type="checkbox" id="item10" onchange="updateProgress()"><label for="item10">Using conditional statements to filter elements</label></li>
+    </ul>
+    <h3>Arithmetic Series</h3>
+    <ul>
+      <li><input type="checkbox" id="item11" onchange="updateProgress()"><label for="item11">Performing scalar multiplication</label></li>
+      <li><input type="checkbox" id="item12" onchange="updateProgress()"><label for="item12">Element-wise multiplication using `.multiply()`</label></li>
+      <li><input type="checkbox" id="item13" onchange="updateProgress()"><label for="item13">Adding two series</label></li>
+    </ul>
+    <h3>Ranking and Sorting</h3>
+    <ul>
+      <li><input type="checkbox" id="item14" onchange="updateProgress()"><label for="item14">Ranking series elements using `.rank()` (with different methods)</label></li>
+      <li><input type="checkbox" id="item15" onchange="updateProgress()"><label for="item15">Sorting series by values using `.sort_values()` (ascending/descending)</label></li>
+      <li><input type="checkbox" id="item16" onchange="updateProgress()"><label for="item16">Sorting series by index using `.sort_index()`</label></li>
+    </ul>
+    <h3>Null Values</h3>
+    <ul>
+      <li><input type="checkbox" id="item17" onchange="updateProgress()"><label for="item17">Checking for null values using `.isnull()` and `.notnull()`</label></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Section 3: Pandas DataFrame -->
+<div class="section">
+  <h2 class="section-title" onclick="toggleSection(this)">Pandas DataFrame</h2>
+  <div class="section-content">
+    <h3>Creating DataFrames</h3>
+    <ul>
+      <li><input type="checkbox" id="item18" onchange="updateProgress()"><label for="item18">Using the `pd.DataFrame()` constructor</label></li>
+      <li><input type="checkbox" id="item19" onchange="updateProgress()"><label for="item19">Creating DataFrames from lists, dictionaries, lists of lists, lists of dictionaries, etc.</label></li>
+      <li><input type="checkbox" id="item20" onchange="updateProgress()"><label for="item20">Setting custom index and column labels</label></li>
+    </ul>
+    <h3>Reading Data from Different Sources</h3>
+    <ul>
+      <li><input type="checkbox" id="item21" onchange="updateProgress()"><label for="item21">Reading data from CSV files, Excel files, ZIP files, text files, JSON files, XML files, and HTML files</label></li>
+    </ul>
+    <h3>DataFrame Manipulations</h3>
+    <ul>
+      <li><input type="checkbox" id="item22" onchange="updateProgress()"><label for="item22">Displaying first/last rows using `.head()` and `.tail()`</label></li>
+      <li><input type="checkbox" id="item23" onchange="updateProgress()"><label for="item23">Getting DataFrame dimensions using `.shape`</label></li>
+      <li><input type="checkbox" id="item24" onchange="updateProgress()"><label for="item24">Checking data types using `.dtypes`</label></li>
+      <li><input type="checkbox" id="item25" onchange="updateProgress()"><label for="item25">Getting DataFrame information using `.info()`</label></li>
+    </ul>
+    <h3>Understanding Data</h3>
+    <ul>
+      <li><input type="checkbox" id="item26" onchange="updateProgress()"><label for="item26">Analyzing DataFrame structure and content using `.shape`, `.dtypes`, and `.info()`</label></li>
+    </ul>
+    <h3>Indexing DataFrames</h3>
+    <ul>
+      <li><input type="checkbox" id="item27" onchange="updateProgress()"><label for="item27">Accessing elements by position using `.iloc[]`</label></li>
+      <li><input type="checkbox" id="item28" onchange="updateProgress()"><label for="item28">Accessing elements by label using `.loc[]`</label></li>
+      <li><input type="checkbox" id="item29" onchange="updateProgress()"><label for="item29">Filtering DataFrames based on conditions</label></li>
+    </ul>
+    <h3>Sorting and Ranking</h3>
+    <ul>
+      <li><input type="checkbox" id="item30" onchange="updateProgress()"><label for="item30">Sorting DataFrames by values using `.sort_values()` (ascending/descending, multiple columns)</label></li>
+      <li><input type="checkbox" id="item31" onchange="updateProgress()"><label for="item31">Sorting DataFrames by index using `.sort_index()`</label></li>
+      <li><input type="checkbox" id="item32" onchange="updateProgress()"><label for="item32">Ranking DataFrame values using `.rank()` (with different methods)</label></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Section 4: Visualizations -->
+<div class="section">
+  <h2 class="section-title" onclick="toggleSection(this)">Visualizations</h2>
+  <div class="section-content">
+    <p>Add your interactive visualizations here. You can use libraries like Plotly or Bokeh.</p>
+    <div id="interactive-plot"></div> 
+    <!-- Plotly chart will be drawn inside this DIV -->
+    <input type="checkbox" id="section4-checkbox" onchange="updateProgress()">
+    <label for="section4-checkbox">Finished this section</label>
+  </div>
+</div>
+
+<!-- Questions Section -->
+<input type="checkbox" id="finished-studying" onchange="showQuestions()">
+<label for="finished-studying">I have studied and finished the list</label>
+
+<div id="questions-section">
+  <h2>Pandas Questions</h2>
+  <p>Answer the following questions by writing Python code in the provided text areas:</p>
+
+  <!-- Question 1 -->
+  <p><label for="q1">Question 1: Create a Pandas Series from a list of 5 numbers.</label><br>
+  <textarea id="q1" name="q1"></textarea></p>
+
+  <!-- Question 2 -->
+  <p><label for="q2">Question 2: Create a Pandas DataFrame from a dictionary with two keys, each containing a list of 3 values.</label><br>
+  <textarea id="q2" name="q2"></textarea></p>
+
+  <!-- ... (Add more questions here - up to 20) ... --> 
+
+</div>
+
+<script>
+function toggleSection(titleElement) {
+  let content = titleElement.nextElementSibling; 
+  content.style.display = content.style.display === "block" ? "none" : "block";
+}
+
+function updateProgress() {
+  let totalCheckboxes = document.querySelectorAll('input[type="checkbox"]').length - 1; // Exclude "Finished Studying" checkbox
+  let checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked').length;
+  let progress = (checkedCheckboxes / totalCheckboxes) * 100;
+  document.getElementById("progress-bar").style.width = progress + "%";
+  document.getElementById("progress-bar").textContent = progress.toFixed(0) + "%"; 
+}
+
+function showQuestions() {
+  if (document.getElementById("finished-studying").checked) {
+    document.getElementById("questions-section").style.display = "block";
+  } else {
+    document.getElementById("questions-section").style.display = "none";
+  }
+}
+
+// Sample Plotly chart (Replace with your actual chart)
+var trace1 = {
+  x: [1, 2, 3, 4],
+  y: [10, 15, 13, 17],
+  type: 'scatter'
+};
+
+var data = [trace1];
+
+var layout = {
+  title: 'A Sample Plotly Chart',
+  xaxis: { title: 'X-axis' },
+  yaxis: { title: 'Y-axis' }
+};
+
+Plotly.newPlot('interactive-plot', data, layout);
+</script>
+
+</body>
+</html>

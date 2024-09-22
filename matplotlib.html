@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Matplotlib Preparation</title>
+<style>
+body {
+  font-family: sans-serif;
+  margin: 20px;
+}
+h1, h2, h3 {
+  color: #333;
+}
+.section {
+  margin-bottom: 40px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+.section-title {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+}
+.section-content {
+  display: none; /* Initially hidden */
+  padding-top: 10px;
+}
+label {
+  display: inline-block; /* Allow label and checkbox to be on same line */
+  margin-left: 5px; 
+  font-weight: normal;
+}
+input[type="text"], textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  resize: vertical;
+}
+button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+#questions-section {
+  display: none; /* Questions hidden by default */
+}
+#progress-bar {
+  width: 0%;
+  height: 20px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 20px;
+  color: white;
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+</style>
+</head>
+<body>
+
+<h1>Matplotlib Preparation</h1>
+
+<div id="progress-section">
+  <h3>Progress:</h3>
+  <div id="progress-bar">0%</div>
+</div>
+
+<!-- Section 1: Fundamentals and Basic Plots -->
+<div class="section">
+  <h2 class="section-title" onclick="toggleSection(this)">Fundamentals and Basic Plots</h2>
+  <div class="section-content">
+    <ul>
+      <li><input type="checkbox" id="item1" onchange="updateProgress()"><label for="item1">What is Matplotlib and why use it?</label></li>
+      <li><input type="checkbox" id="item2" onchange="updateProgress()"><label for="item2">Importing Matplotlib</label></li>
+      <li><input type="checkbox" id="item3" onchange="updateProgress()"><label for="item3">Understanding figures and axes</label></li>
+      <li><input type="checkbox" id="item4" onchange="updateProgress()"><label for="item4">Creating figures and subplots</label></li>
+      <li><input type="checkbox" id="item5" onchange="updateProgress()"><label for="item5">Creating line plots, scatter plots, bar charts, and histograms</label></li>
+      <li><input type="checkbox" id="item6" onchange="updateProgress()"><label for="item6">Setting plot titles, axis labels, and legends</label></li>
+      <li><input type="checkbox" id="item7" onchange="updateProgress()"><label for="item7">Customizing colors, line styles, and markers</label></li>
+      <li><input type="checkbox" id="item8" onchange="updateProgress()"><label for="item8">Setting axis limits and adding gridlines</label></li>
+      <li><input type="checkbox" id="item9" onchange="updateProgress()"><label for="item9">Saving figures to files</label></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Section 2: Intermediate and Advanced Techniques -->
+<div class="section">
+  <h2 class="section-title" onclick="toggleSection(this)">Intermediate and Advanced Techniques</h2>
+  <div class="section-content">
+    <ul>
+      <li><input type="checkbox" id="item10" onchange="updateProgress()"><label for="item10">Adding annotations (text and arrows) to plots</label></li>
+      <li><input type="checkbox" id="item11" onchange="updateProgress()"><label for="item11">Creating box plots, violin plots, heatmaps, and potentially contour plots</label></li>
+      <li><input type="checkbox" id="item12" onchange="updateProgress()"><label for="item12">Customizing tick locations and formatting</label></li>
+      <li><input type="checkbox" id="item13" onchange="updateProgress()"><label for="item13">Using Matplotlib styles and themes</label></li>
+      <!-- (Include checkboxes for 3D plotting, animations, interactive plots if covered) -->
+    </ul>
+  </div>
+</div>
+
+<!-- Questions Section -->
+<input type="checkbox" id="finished-studying" onchange="showQuestions()">
+<label for="finished-studying">I have studied and finished the list</label>
+
+<div id="questions-section">
+  <h2>Matplotlib Questions</h2>
+  <p>Answer the following questions by writing Python code in the provided text areas:</p>
+
+  <!-- Question 1 -->
+  <p><label for="q1">Question 1:  Create a line plot with data points (1, 2), (2, 4), (3, 6), (4, 8). Set the title to "Line Plot", the x-axis label to "X-axis", and the y-axis label to "Y-axis". </label><br>
+  <textarea id="q1" name="q1"></textarea></p>
+
+  <!-- Question 2 -->
+  <p><label for="q2">Question 2: Create a scatter plot with random x and y values (generate 10 random numbers for each).  Color the points blue. Set appropriate labels for the axes.</label><br>
+  <textarea id="q2" name="q2"></textarea></p>
+
+  <!-- ... (Add more questions here - up to 20) ... --> 
+
+</div>
+
+<script>
+function toggleSection(titleElement) {
+  let content = titleElement.nextElementSibling; 
+  content.style.display = content.style.display === "block" ? "none" : "block";
+}
+
+function updateProgress() {
+  let totalCheckboxes = document.querySelectorAll('input[type="checkbox"]').length - 1; // Exclude "Finished Studying" checkbox
+  let checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked').length;
+  let progress = (checkedCheckboxes / totalCheckboxes) * 100;
+  document.getElementById("progress-bar").style.width = progress + "%";
+  document.getElementById("progress-bar").textContent = progress.toFixed(0) + "%"; 
+}
+
+function showQuestions() {
+  if (document.getElementById("finished-studying").checked) {
+    document.getElementById("questions-section").style.display = "block";
+  } else {
+    document.getElementById("questions-section").style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>

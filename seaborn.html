@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Seaborn Preparation</title>
+<style>
+body {
+  font-family: sans-serif;
+  margin: 20px;
+}
+h1, h2, h3 {
+  color: #333;
+}
+.section {
+  margin-bottom: 40px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+.section-title {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+}
+.section-content {
+  display: none; /* Initially hidden */
+  padding-top: 10px;
+}
+label {
+  display: inline-block; /* Allow label and checkbox to be on same line */
+  margin-left: 5px; 
+  font-weight: normal;
+}
+input[type="text"], textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  resize: vertical;
+}
+button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+#questions-section {
+  display: none; /* Questions hidden by default */
+}
+#progress-bar {
+  width: 0%;
+  height: 20px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 20px;
+  color: white;
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+</style>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script> </head>
+<body>
+
+<h1>Seaborn Preparation</h1>
+
+<div id="progress-section">
+  <h3>Progress:</h3>
+  <div id="progress-bar">0%</div>
+</div>
+
+<!-- Section 1: Fundamentals and Statistical Visualizations -->
+<div class="section">
+  <h2 class="section-title" onclick="toggleSection(this)">Fundamentals and Statistical Visualizations</h2>
+  <div class="section-content">
+    <ul>
+      <li><input type="checkbox" id="item1" onchange="updateProgress()"><label for="item1">What is Seaborn and how does it relate to Matplotlib?</label></li>
+      <li><input type="checkbox" id="item2" onchange="updateProgress()"><label for="item2">Importing Seaborn</label></li>
+      <li><input type="checkbox" id="item3" onchange="updateProgress()"><label for="item3">Creating histograms and density plots (KDE)</label></li>
+      <li><input type="checkbox" id="item4" onchange="updateProgress()"><label for="item4">Visualizing cumulative distributions</label></li>
+      <li><input type="checkbox" id="item5" onchange="updateProgress()"><label for="item5">Creating bar plots, count plots, box plots, and violin plots for categorical data</label></li>
+      <li><input type="checkbox" id="item6" onchange="updateProgress()"><label for="item6">Creating scatter plots and line plots for relationships</label></li>
+      <li><input type="checkbox" id="item7" onchange="updateProgress()"><label for="item7">Adding regression lines to scatter plots</label></li>
+      <li><input type="checkbox" id="item8" onchange="updateProgress()"><label for="item8">Setting figure styles and choosing color palettes</label></li>
+      <li><input type="checkbox" id="item9" onchange="updateProgress()"><label for="item9">Customizing plot aesthetics (using 'hue', 'size', 'style', etc.)</label></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Section 2: Working with Data and More Advanced Plots -->
+<div class="section">
+  <h2 class="section-title" onclick="toggleSection(this)">Working with Data and More Advanced Plots</h2>
+  <div class="section-content">
+    <ul>
+      <li><input type="checkbox" id="item10" onchange="updateProgress()"><label for="item10">Using Seaborn's built-in datasets</label></li>
+      <li><input type="checkbox" id="item11" onchange="updateProgress()"><label for="item11">Creating FacetGrids for multiple plots based on categories</label></li>
+      <li><input type="checkbox" id="item12" onchange="updateProgress()"><label for="item12">Visualizing relationships with pair plots</label></li>
+      <li><input type="checkbox" id="item13" onchange="updateProgress()"><label for="item13">Creating heatmaps for correlation matrices</label></li>
+      <!-- (Include checkboxes for joint plots, clustermaps, or other advanced plots if covered) -->
+    </ul>
+  </div>
+</div>
+
+<!-- Questions Section -->
+<input type="checkbox" id="finished-studying" onchange="showQuestions()">
+<label for="finished-studying">I have studied and finished the list</label>
+
+<div id="questions-section">
+  <h2>Seaborn Questions</h2>
+  <p>Answer the following questions by writing Python code in the provided text areas:</p>
+
+  <!-- Question 1 -->
+  <p><label for="q1">Question 1: Load the 'iris' dataset from Seaborn and create a scatter plot showing sepal length vs. sepal width, with different colors for each species.</label><br>
+  <textarea id="q1" name="q1"></textarea></p>
+
+  <!-- Question 2 -->
+  <p><label for="q2">Question 2: Using the 'tips' dataset from Seaborn, create a box plot showing the distribution of total bill amounts for each day of the week.</label><br>
+  <textarea id="q2" name="q2"></textarea></p>
+
+  <!-- ... (Add more questions here - up to 20) ... --> 
+
+</div>
+
+<div id="interactive-plot"></div>
+<script>
+function toggleSection(titleElement) {
+  let content = titleElement.nextElementSibling; 
+  content.style.display = content.style.display === "block" ? "none" : "block";
+}
+
+function updateProgress() {
+  let totalCheckboxes = document.querySelectorAll('input[type="checkbox"]').length - 1; // Exclude "Finished Studying" checkbox
+  let checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked').length;
+  let progress = (checkedCheckboxes / totalCheckboxes) * 100;
+  document.getElementById("progress-bar").style.width = progress + "%";
+  document.getElementById("progress-bar").textContent = progress.toFixed(0) + "%"; 
+}
+
+function showQuestions() {
+  if (document.getElementById("finished-studying").checked) {
+    document.getElementById("questions-section").style.display = "block";
+  } else {
+    document.getElementById("questions-section").style.display = "none";
+  }
+}
+
+// Sample Plotly chart (Replace with your actual chart)
+var trace1 = {
+  x: [1, 2, 3, 4],
+  y: [10, 15, 13, 17],
+  type: 'scatter'
+};
+
+var data = [trace1];
+
+var layout = {
+  title: 'A Sample Plotly Chart',
+  xaxis: { title: 'X-axis' },
+  yaxis: { title: 'Y-axis' }
+};
+
+Plotly.newPlot('interactive-plot', data, layout);
+</script>
+
+</body>
+</html>
