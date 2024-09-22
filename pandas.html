@@ -4,28 +4,32 @@
 <title>Pandas Preparation</title>
 <style>
 body {
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif; 
+  background-color: #F7F7F7; 
+  color: #333; 
   margin: 20px;
 }
 h1, h2, h3 {
-  color: #333;
+  color: #202020;
 }
 .section {
-  margin-bottom: 40px;
-  border: 1px solid #ccc;
-  padding: 10px;
+  background-color: white;
+  border: 1px solid #E0E0E0; 
+  padding: 20px;
   border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 40px; 
 }
 .section-title {
   cursor: pointer;
-  user-select: none; /* Prevent text selection */
+  user-select: none; 
 }
 .section-content {
-  display: none; /* Initially hidden */
+  display: none; 
   padding-top: 10px;
 }
 label {
-  display: inline-block; /* Allow label and checkbox to be on same line */
+  display: inline-block;
   margin-left: 5px; 
   font-weight: normal;
 }
@@ -36,21 +40,27 @@ input[type="text"], textarea {
   box-sizing: border-box;
   margin-bottom: 10px;
   resize: vertical;
+  font-family: monospace; /* Monospace font for code */
+  background-color: #F0F0F0; /* Light gray background for code */
 }
 button {
-  padding: 10px 15px;
-  background-color: #4CAF50;
+  background-color: #3BB1EC; 
   color: white;
   border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
 }
+button:hover {
+  background-color: #1F90CB;
+}
 #questions-section {
-  display: none; /* Questions hidden by default */
+  display: none;
 }
 #progress-bar {
   width: 0%;
   height: 20px;
-  background-color: #4CAF50;
+  background-color: #3BB1EC;
   text-align: center;
   line-height: 20px;
   color: white;
@@ -58,7 +68,8 @@ button {
   transition: width 0.3s ease;
 }
 </style>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script> </head>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
+</head>
 <body>
 
 <h1>Pandas Preparation</h1>
@@ -68,7 +79,8 @@ button {
   <div id="progress-bar">0%</div>
 </div>
 
-<!-- Section 1: Introduction to Pandas -->
+<!-- ... (Rest of the pandas.html code with sections, checkboxes, questions, and Plotly chart) ... --> 
+  <!-- Section 1: Introduction to Pandas -->
 <div class="section">
   <h2 class="section-title" onclick="toggleSection(this)">Introduction to Pandas</h2>
   <div class="section-content">
